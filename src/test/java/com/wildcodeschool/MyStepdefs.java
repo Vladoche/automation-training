@@ -21,7 +21,7 @@ public class MyStepdefs {
         if (os.contains("windows")){
             System.setProperty("webdriver.chrome.driver","src/test/java/com/wildcodeschool/chromedriver.exe");
         } else if (os.contains("mac")){
-            System.setProperty("webDriver.chrome.drive", "src/test/resources/drivers/chromedriver");
+            System.setProperty("webDriver.chrome.drive", "src/test/java/com/wildcodeschool/chromedriver");
         }
 
         ChromeOptions options = new ChromeOptions();
