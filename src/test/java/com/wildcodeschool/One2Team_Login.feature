@@ -1,4 +1,3 @@
-@livecoding
 Feature: One2Team_Login
 
   Scenario: Login success

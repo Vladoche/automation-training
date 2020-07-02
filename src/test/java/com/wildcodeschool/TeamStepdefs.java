@@ -4,20 +4,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import static com.wildcodeschool.Hooks.*;
 
 import static org.junit.Assert.assertTrue;
 
 public class TeamStepdefs {
-    static WebDriver driver;
-
-    public TeamStepdefs() {
-        this.driver = Hooks.driver;
-    }
 
     @Given("user navigates to {string}")
-    public void userNavigatesTo(String url) {
+    public static void userNavigatesTo(String url) {
         driver.get(url);
     }
 
