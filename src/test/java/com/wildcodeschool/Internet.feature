@@ -1,4 +1,4 @@
-@livecoding
+@livecoding @notexecute
 Feature: The internet
 
   @add_remove

@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 public class MyStepdefs {
     WebDriver driver;
-    String os = System.getProperty("os.name").toLowerCase();
+
     String base_url = "https://the-internet.herokuapp.com/";
     String target_url;
 
@@ -103,26 +103,12 @@ public class MyStepdefs {
         }
     }
 
-    @After
-    public void tearDown(){
-        driver.quit();
-    }
+
 
     @Then("login is {string} with {string}")
     public void loginIsWith(String arg0, String arg1) {
         assertTrue(driver.findElement(By.id("flash")).getText().contains(arg1));
     }
 
-    @Before
-    public void setUp(){
-        if (os.contains("windows")){
-            System.setProperty("webdriver.chrome.driver","src/test/java/com/wildcodeschool/chromedriver.exe");
-        } else if (os.contains("mac")){
-            System.setProperty("webDriver.chrome.drive", "src/test/java/com/wildcodeschool/chromedriver");
-        }
-        ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver(options);
-        driver.manage().window().setPosition(new Point(2000,10));
-        driver.manage().window().maximize();
-    }
+
 }
