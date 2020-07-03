@@ -1,10 +1,11 @@
+@livecoding
 Feature: One2Team_Login
 
   Scenario: Login success
     #Before
     Given user navigates to "https://chewie.one2team.com/"
-    When user enters "userName" "etudiant10"
-    When user enters "passWord" "Etudiant10*"
+    When user enters "userName" "etudiant3"
+    When user enters "passWord" "Etudiant3*"
     When user enters "domainName" "telco"
     When user clicks on Connect button
     Then user is redirected to One2Team homepage
