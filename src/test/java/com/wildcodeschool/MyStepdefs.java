@@ -103,12 +103,12 @@ public class MyStepdefs {
         }
     }
 
-
-
     @Then("login is {string} with {string}")
     public void loginIsWith(String arg0, String arg1) {
         assertTrue(driver.findElement(By.id("flash")).getText().contains(arg1));
     }
 
-
+    @Then("an error message is displayed")
+    public void anErrorMessageIsDisplayed() {
+    }
 }

@@ -48,8 +48,12 @@ public class HomeStepdefs {
     }
 
     @When("user disconnects from platform")
-    public void userDisconnectsFromPlatform() {
-        driver.findElement(By.cssSelector("#root > div > section > section > div > header:nth-child(2) > div > div > i")).click();
+    public void userDisconnectsFromPlatform() throws InterruptedException {
+        Thread.sleep(5000);
+        WebElement divRoot = driver.findElement(By.cssSelector("#root > div > section > section > div > header:nth-child(2) > div > div"));
+        while (divRoot.getAttribute("class").equals("app-bar-profile-picture ant-dropdown-trigger")){
+            driver.findElement(By.cssSelector("#root > div > section > section > div > header:nth-child(2) > div > div > img")).click();
+        }
         driver.findElement(By.cssSelector("body > div:nth-child(8) > div > div > ul > li:nth-child(2)")).click();
     }
 
@@ -58,17 +62,36 @@ public class HomeStepdefs {
         assertTrue(driver.getCurrentUrl().contains("login"));
     }
 
-
     @Then("items inside tab are hidden")
     public void itemsInsideTabAreHidden() throws InterruptedException {
         Thread.sleep(5000);
         assertEquals("false", tab.getAttribute("aria-expanded"));
     }
 
+    @When("I {string} tab {string}")
+    public void itab(String arg0, String arg1) {
+        tab = driver.findElement(By.cssSelector("#root > div > section > section > div > main > div > div > div.home-sections > div:nth-child("+arg1+") > div > div.ant-collapse-header"));
+        switch (arg0){
+            case "expand":
+            default:
+                if (tab.getAttribute("aria-expanded").equals("false")){
+                    tab.click();
+                }
+                break;
+            case "collapse":
+                if (tab.getAttribute("aria-expanded").equals("true")){
+                    tab.click();
+                }
+        }
+    }
 
-    @When("I collapse {string}")
-    public void iCollapse(String arg0) {
-        tab = driver.findElement(By.cssSelector("#root > div > section > section > div > main > div > div > div.home-sections > div:nth-child("+arg0+") > div > div.ant-collapse-header"));
-        tab.click();
+    @Then("items inside tab are {string}")
+    public void itemsInsideTabAre(String arg0) throws InterruptedException {
+        Thread.sleep(5000);
+        if (arg0.equals("shown")){
+            assertEquals("true", tab.getAttribute("aria-expanded"));
+        } else {
+            assertEquals("false", tab.getAttribute("aria-expanded"));
+        }
     }
 }
