@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty","json:target/json/results.json","html:target/html/results.html"},
         features = {"src/test/java/com/wildcodeschool"},
         glue = {"com.wildcodeschool"},
-        tags = "@this"
+        tags = "@frame and not @no-run"
 )
 
 class AppTest

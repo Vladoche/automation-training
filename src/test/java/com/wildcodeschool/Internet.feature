@@ -1,4 +1,4 @@
-@theinternet @no-run
+@theinternet
 Feature: The internet
 
   @add_remove
@@ -55,3 +55,20 @@ Feature: The internet
       | template - basic form auth - Login pass          | tomsmith | SuperSecretPassword! | successful   | You logged into a secure area! |
       | template - basic form auth - fail wrong username | anass    | SuperSecretPassword! | failed       | Your username is invalid!      |
       | template - basic form auth - fail wrong password | tomsmith | wrong_pass           | failed       | Your password is invalid!      |
+    
+  Scenario: Identify frames
+    Given I am on page "nested_frames"
+    When I identify all webpage frames
+
+  @frame
+  Scenario Template: Switch to frame
+    Given I am on page "nested_frames"
+    When I switch to frame "<frame>"
+    Examples:
+      | frame        |
+      | frame-left   |
+      | frame-middle |
+      | frame-right  |
+      | frame-bottom |
+
+

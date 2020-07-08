@@ -1,5 +1,6 @@
 package com.wildcodeschool;
 
+import com.sun.xml.internal.ws.server.DefaultResourceInjector;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -7,17 +8,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import static com.wildcodeschool.Hooks.driver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MyStepdefs {
-    WebDriver driver;
 
     String base_url = "https://the-internet.herokuapp.com/";
     String target_url;
@@ -110,5 +112,37 @@ public class MyStepdefs {
 
     @Then("an error message is displayed")
     public void anErrorMessageIsDisplayed() {
+    }
+
+    @When("I identify all webpage frames")
+    public void iIdentifyAllWebpageFrames() {
+        ArrayList<WebElement> frames = (ArrayList<WebElement>) driver.findElements(By.tagName("frame"));
+        System.out.println("Level one of frame has " +frames.size() +" frames");
+        for (WebElement frameLevelOne:frames){
+            System.out.println(frameLevelOne.getAttribute("name"));
+            driver.switchTo().frame(frameLevelOne);
+            ArrayList<WebElement> framesLevelTwo = (ArrayList<WebElement>) driver.findElements(By.tagName("frame"));
+            System.out.println("Level two of frame has " +framesLevelTwo.size() +" frames");
+            for (WebElement frameLevelTwo:framesLevelTwo){
+                System.out.println(frameLevelTwo.getAttribute("name"));
+            }
+            driver.switchTo().parentFrame();
+        }
+    }
+
+    @When("I switch to frame {string}")
+    public void iSwitchToFrame(String arg0) {
+        switch (arg0){
+            case "frame-left":
+            case "frame-middle":
+            case "frame-right":
+                driver.switchTo().frame("frame-top");
+                driver.switchTo().frame(arg0);
+                break;
+            case "frame-bottom":
+                driver.switchTo().frame(arg0);
+                break;
+        }
+        System.out.println(driver.findElement(By.cssSelector("body")).getText());
     }
 }
