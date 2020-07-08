@@ -1,18 +1,14 @@
-package com.wildcodeschool;
+package steps_definitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 
-import static com.wildcodeschool.Hooks.*;
+import static modules.Hooks.*;
 import static org.junit.Assert.*;
 
 public class HomeStepdefs {

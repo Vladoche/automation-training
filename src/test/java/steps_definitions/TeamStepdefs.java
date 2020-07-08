@@ -1,11 +1,11 @@
-package com.wildcodeschool;
+package steps_definitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import static com.wildcodeschool.Hooks.*;
+import static modules.Hooks.driver;
 
 import static org.junit.Assert.assertTrue;
 

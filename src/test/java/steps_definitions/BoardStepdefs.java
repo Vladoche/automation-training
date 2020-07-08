@@ -1,4 +1,4 @@
-package com.wildcodeschool;
+package steps_definitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static com.wildcodeschool.Hooks.driver;
+import static modules.Hooks.driver;
 import static org.junit.Assert.assertTrue;
 
 public class BoardStepdefs {

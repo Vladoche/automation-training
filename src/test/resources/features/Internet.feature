@@ -55,7 +55,7 @@ Feature: The internet
       | template - basic form auth - Login pass          | tomsmith | SuperSecretPassword! | successful   | You logged into a secure area! |
       | template - basic form auth - fail wrong username | anass    | SuperSecretPassword! | failed       | Your username is invalid!      |
       | template - basic form auth - fail wrong password | tomsmith | wrong_pass           | failed       | Your password is invalid!      |
-    
+
   Scenario: Identify frames
     Given I am on page "nested_frames"
     When I identify all webpage frames

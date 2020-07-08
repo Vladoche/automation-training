@@ -1,20 +1,16 @@
-package com.wildcodeschool;
+package steps_definitions;
 
-import com.sun.xml.internal.ws.server.DefaultResourceInjector;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
-import static com.wildcodeschool.Hooks.driver;
+import static modules.Hooks.driver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
